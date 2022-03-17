@@ -1,23 +1,25 @@
 import { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import { NavLink, Route, Routes } from 'react-router-dom'
+import { Navigate, NavLink, Route, Routes } from 'react-router-dom'
+
+
+import WebsiteLayout from './pages/layouts/WebsiteLayout'
+import AdminLayout from './pages/layouts/AdminLayout'
 
 
 import Homepage from './pages/HomePage'
 import ProductPage from './pages/ProductPage'
-import AboutPage from './pages/AboutPage'
-import ContactPage from './pages/ContactPage'
 
 
 
-import Header from './components/Header'
-import Footer from './components/footer'
+
+
 
 function App() {
   return (
     <div className="container-fuild">
-      <Header />
+      {/* <Header />
       <main>
           <Routes>
             <Route path="/" element={<Homepage />} />
@@ -26,7 +28,21 @@ function App() {
             <Route path="contact" element={<ContactPage />}/>
           </Routes>
       </main>
-      <Footer />
+      <Footer /> */}
+
+      <Routes>
+
+        <Route path='/' element={<WebsiteLayout />}>
+          <Route index element={<Homepage />} />
+          <Route path='product' element={<ProductPage />} />
+        </Route>
+
+        <Route path='/' element={<AdminLayout />}>
+          <Route index element={<Navigate to="dashboard" />} />
+          <Route path='dashboard' element={<h1>Dashboard page</h1>} />
+        </Route>
+
+      </Routes>
     </div>
   )
 }
