@@ -2,22 +2,22 @@ import { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import { NavLink, Route, Routes } from 'react-router-dom'
-import Homepage from './pages/homePage'
-import ProductPage from './pages/productPage'
-import AboutPage from './pages/aboutPage'
-import ContactPage from './pages/contactPage'
+
+
+import Homepage from './pages/HomePage'
+import ProductPage from './pages/ProductPage'
+import AboutPage from './pages/AboutPage'
+import ContactPage from './pages/ContactPage'
+
+
+
+import Header from './components/Header'
+import Footer from './components/footer'
 
 function App() {
   return (
-    <div className="container">
-      <header>
-        <ul className="main">
-          <li><NavLink to="/">Home Page</NavLink></li>
-          <li><NavLink to="/product">Product</NavLink></li>
-          <li><NavLink to="/about">About</NavLink></li>
-          <li><NavLink to="/contact">Contact</NavLink></li>
-        </ul>
-      </header>
+    <div className="container-fuild">
+      <Header />
       <main>
           <Routes>
             <Route path="/" element={<Homepage />} />
@@ -26,6 +26,7 @@ function App() {
             <Route path="contact" element={<ContactPage />}/>
           </Routes>
       </main>
+      <Footer />
     </div>
   )
 }
