@@ -1,8 +1,12 @@
 import React from 'react'
+import {ProductType} from '../types/products'
+type ProductManagerPropsProps = {
+  products: ProductType[],
+  onRemove: (id:number) =>void
+}
 
-type Props = {}
+const homePage = ({products, onRemove}:ProductManagerPropsProps) => {
 
-const homePage = (props: Props) => {
   return (
 
    <div className="content ">
@@ -33,6 +37,8 @@ const homePage = (props: Props) => {
       </button>
     </div>
     <div className="row m-4">
+      {/* {products?.map((item, index) =>{})} */}
+
       <div className="col">
         <div className="card" style={{width: '18rem'}}>
           <img className="card-img-top" src="https://bizweb.dktcdn.net/100/080/164/products/giay-luoi-nam-da-that-cao-cap-37.jpg?v=1610342069860" alt="Card image cap" />
@@ -46,7 +52,13 @@ const homePage = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className="col">
+
+
+
+
+
+
+      {/* <div className="col">
         <div className="card" style={{width: '18rem'}}>
           <img className="card-img-top" src="https://bumshop.com.vn/wp-content/uploads/2019/12/giay-da-ca-sau-nam-2.jpg" alt="Card image cap" />
           <div className="card-body">
@@ -84,7 +96,7 @@ const homePage = (props: Props) => {
             <button  type="button" className="btn btn-danger card-link">Thêm giỏ hàng</button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
    </div>
 
