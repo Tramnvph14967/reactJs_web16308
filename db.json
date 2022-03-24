@@ -12,8 +12,18 @@
     },
     {
       "id": "3",
-      "name": "Product_C",
-      "price": 234567
+      "name": "Product_B",
+      "price": 23456
+    },
+    {
+      "id": "4",
+      "name": "Product_B",
+      "price": 23456
+    },
+    {
+      "name": "Nguyễn Văn Trăm",
+      "price": "500000",
+      "id": "DpW8y5g"
     }
   ]
 }

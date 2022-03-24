@@ -3,27 +3,22 @@ import logo from './logo.svg'
 import './App.css'
 import { Navigate, NavLink, Route, Routes } from 'react-router-dom'
 
-
 import WebsiteLayout from './pages/layouts/WebsiteLayout'
 import AdminLayout from './pages/layouts/AdminLayout'
-
 
 import Homepage from './pages/website/HomePage'
 import ProductPage from './pages/website/ProductPage'
 import ProductDetail from './pages/website/ProductDetail'
 
-
-
-
 import ProductManager from './pages/admin/ProductManager'
+import ProductAdd from './pages/admin/ProductAdd'
 
 
 import { ProductType } from './pages/types/products'
-import { list, remove } from './api/product'
+import { add, list, remove } from './api/product'
 
 
 function App() {
-
   const [products, setProducts] = useState<ProductType[]>([]);
   useEffect(() => {
     const getProducts = async () => {
@@ -39,41 +34,27 @@ function App() {
 
     //setProduct()
   }
-
-
-
+  const onHanldeAdd = (data) => {
+    add(data);
+    setProducts([...products, data])
+}
   return (
     <div className="container-fuild">
-      {/* <Header />
-      <main>
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="product" element={<ProductPage />}/>
-            <Route path="about" element={<AboutPage />}/>
-            <Route path="contact" element={<ContactPage />}/>
-          </Routes>
-      </main>
-      <Footer /> */}
-      {/* <div>
-  {products.map(item =>item.name)}
-</div> */}
+     
       <Routes>
-
         <Route path='/' element={<WebsiteLayout />}>
           <Route index element={<Homepage />} />
-
           <Route path="product">
             <Route index element={<ProductPage />} />
             <Route path=":id" element={<ProductDetail />} />
           </Route>
         </Route>
-
         <Route path='admin' element={<AdminLayout />}>
           <Route index element={<Navigate to="dashboard" />} />
           <Route path='dashboard' element={<h1>Dashboard page</h1>} />
-          <Route path="product" element={<ProductManager products={products} onRemove={removeItem} />} />
+          <Route path="products" element={<ProductManager products={products} onRemove={removeItem} />} />
+          <Route path="/admin/product/add" element={<ProductAdd onAdd={onHanldeAdd}/>} />
         </Route>
-
       </Routes>
     </div>
   )
