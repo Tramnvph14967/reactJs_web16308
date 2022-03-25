@@ -12,10 +12,10 @@ import ProductDetail from './pages/website/ProductDetail'
 
 import ProductManager from './pages/admin/ProductManager'
 import ProductAdd from './pages/admin/ProductAdd'
-
+import ProductEdit from './pages/admin/ProductEdit'
 
 import { ProductType } from './pages/types/products'
-import { add, list, remove } from './api/product'
+import { add, list, remove, update } from './api/product'
 
 
 function App() {
@@ -27,17 +27,26 @@ function App() {
     }
     getProducts();
   }, [])
-  const removeItem = (id) => {
+
+
+  const removeItem = (id:number) => {
     remove(id);
     //reRender
     setProducts(products.filter(item => item.id !== id));
 
     //setProduct()
   }
+
+  
   const onHanldeAdd = (data) => {
     add(data);
     setProducts([...products, data])
 }
+
+  const onHanldeUpdate = async (product: ProductType) =>{
+      const {data} = await update(product);
+      setProducts(products.map(item => item.id === data.id ? data : item));
+  }
   return (
     <div className="container-fuild">
      
@@ -49,11 +58,19 @@ function App() {
             <Route path=":id" element={<ProductDetail />} />
           </Route>
         </Route>
+
+
+        
         <Route path='admin' element={<AdminLayout />}>
           <Route index element={<Navigate to="dashboard" />} />
           <Route path='dashboard' element={<h1>Dashboard page</h1>} />
-          <Route path="products" element={<ProductManager products={products} onRemove={removeItem} />} />
-          <Route path="/admin/product/add" element={<ProductAdd onAdd={onHanldeAdd}/>} />
+
+          <Route path='product'>
+              <Route index element={<ProductManager products={products} onRemove={removeItem} />} />
+              <Route path='add' element={<ProductAdd onAdd={onHanldeAdd} />}/>
+              <Route path=':id/edit' element={<ProductEdit onUpdate={onHanldeUpdate}/>} />
+          </Route>
+
         </Route>
       </Routes>
     </div>

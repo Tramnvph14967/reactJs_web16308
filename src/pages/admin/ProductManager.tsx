@@ -30,6 +30,7 @@ const ProductManager = ({ products, onRemove }: ProductManagerProps) => {
               <td>{item.price}</td>
               <td>
                 <button onClick={() => onRemove(item.id)}>Remove</button>
+               
               </td>
             </tr>
           })}
