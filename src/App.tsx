@@ -9,6 +9,9 @@ import AdminLayout from './pages/layouts/AdminLayout'
 import Homepage from './pages/website/HomePage'
 import ProductPage from './pages/website/ProductPage'
 import ProductDetail from './pages/website/ProductDetail'
+import SignupPage from './pages/website/SignupPage'
+import SigninPage from './pages/website/SigninPage'
+
 
 import ProductManager from './pages/admin/ProductManager'
 import ProductAdd from './pages/admin/ProductAdd'
@@ -58,13 +61,9 @@ function App() {
             <Route path=":id" element={<ProductDetail />} />
           </Route>
         </Route>
-
-
-        
         <Route path='admin' element={<AdminLayout />}>
           <Route index element={<Navigate to="dashboard" />} />
           <Route path='dashboard' element={<h1>Dashboard page</h1>} />
-
           <Route path='product'>
               <Route index element={<ProductManager products={products} onRemove={removeItem} />} />
               <Route path='add' element={<ProductAdd onAdd={onHanldeAdd} />}/>
@@ -72,6 +71,8 @@ function App() {
           </Route>
 
         </Route>
+        <Route path='signin' element={<SigninPage />} />
+        <Route path='signup' element={<SignupPage />} />
       </Routes>
     </div>
   )

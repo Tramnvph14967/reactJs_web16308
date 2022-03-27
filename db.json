@@ -24,6 +24,25 @@
       "name": "product_a",
       "price": "5000009999",
       "id": "OcNsvyK"
+    },
+    {
+      "name": "Nguyễn Văn Trăm",
+      "price": "500000",
+      "id": "QEMzyb3"
+    },
+    {
+      "name": "aa",
+      "price": "55555566",
+      "id": "MHVZWE2"
     }
+  ],
+  "user" : [
+        {
+          "id":"1",
+          "name": "Nguyễn Văn Trăm",
+          "email": "tramnvph14967@gmail.com",
+          "password": "T123456"
+          
+        }
   ]
 }
